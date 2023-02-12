@@ -1,0 +1,51 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .icon-holder {
+    text-align: center;
+    width: 100%;
+    line-height: 0;
+    margin-top: calc(-35% - 20px);
+    margin-bottom: 39px;
+
+    .icon {
+      max-width: 100px;
+      height: auto;
+    }
+  }
+
+  .card {
+    box-shadow: 0 6px 15px rgb(0 0 0 / 16%);
+    padding: 5rem 2rem;
+    border-radius: 10px;
+
+    .btn {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .form-group {
+      text-align: center;
+    }
+
+    .example-form {
+      min-width: 150px;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .example-full-width {
+      width: 100%;
+      margin-bottom: 15px;
+
+    }
+  }
+}

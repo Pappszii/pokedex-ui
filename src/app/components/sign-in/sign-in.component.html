@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card">
+    <div class="icon-holder">
+      <img src="/assets/icons/pokedex_login.png" alt="image" class="icon">
+    </div>
+    <h2 class="title">Welcome to our pokedex</h2>
+    <form class="example-form" [formGroup]="loginForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput class="form-control" formControlName="email" required
+            placeholder="test@pokemon.com">
+          <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="email?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Enter your password</mat-label>
+          <input type="password" matInput class="form-control" formControlName="password">
+          <mat-error *ngIf="password?.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-flat-button color="primary" type="submit" class="btn">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
