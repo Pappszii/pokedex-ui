@@ -1,0 +1,34 @@
+<div class="dialog-container">
+  <div class="left">
+    <div class="pokemon-stat-container">
+      <div class="pokemon-name">
+        {{data.pokemon.name.toUpperCase()}}
+      </div>
+      <span class="pokemon-type" [ngStyle]="{'background' : getTypeColor()}">
+        {{data.pokemon.type.toUpperCase()}}
+      </span>
+      <div class="table-container">
+        <table>
+          <tr>
+            <td>Hp: {{data.pokemon.hp}}</td>
+            <td>Att: {{data.pokemon.att}}</td>
+          </tr>
+          <tr>
+            <td>Def: {{data.pokemon.def}}</td>
+            <td>Sp: {{data.pokemon.speed}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="button-container">
+        <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="selected = !selected">
+          <mat-icon>autorenew</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div>
+      <img src="{{getPic()}}">
+    </div>
+  </div>
+</div>

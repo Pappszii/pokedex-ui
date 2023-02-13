@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { take } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon';
+import { PokedexApiService } from 'src/app/services/pokedex-api.service';
+import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -8,38 +11,26 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./pokedex.component.scss']
 })
 export class PokedexComponent {
-  search = '';
-  value = ''
-  pokemon = {
-    id: 1,
-    name: 'Pikachu',
-    type: 'electric',
-    hp: 50,
-    att: 41,
-    def: 23,
-    speed: 34,
-    pictures: [
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png'
-    ]
-  } as Pokemon;
-  pokemon1 = {
-    id: 1,
-    name: 'Pikachu',
-    type: 'electric',
-    hp: 50,
-    att: 41,
-    def: 23,
-    speed: 34,
-    pictures: [
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png'
-    ]
-  } as Pokemon;
-  pokemons: Pokemon[] = []; 
+  searchValue = '';
+  pokemons: Pokemon[] = [];
+  favorites = [];
 
-  constructor(public readonly authService: AuthService) {
-    this.pokemons.push(...[this.pokemon, this.pokemon1, this.pokemon1, this.pokemon1, this.pokemon1, this.pokemon1, this.pokemon1]);
+  constructor(public readonly authService: AuthService,
+    private readonly pokedexApiService: PokedexApiService,
+    private readonly userService: UserService) {
+    this.pokedexApiService.getAllPokemon()
+      .pipe(take(1))
+      .subscribe(response => this.pokemons = response);
+    this.userService.getFavorites().then(favs => this.favorites = favs);
   }
 
+  onSearch() {
+    this.pokedexApiService.getPokemonsByName(this.searchValue)
+      .pipe(take(1))
+      .subscribe(response => this.pokemons = response);
+  }
+
+  isPokemonFavorite(pokemon: Pokemon) {
+    return this.favorites.some((num) => num === pokemon.id);
+  }
 }

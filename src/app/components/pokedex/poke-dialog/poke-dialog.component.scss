@@ -1,0 +1,48 @@
+.dialog-container {
+  width: 20rem;
+  padding: 16px;
+
+  .pokemon-stat-container {
+    .pokemon-name {
+      font-weight: bold;
+    }
+
+    .table-container {
+      padding-top: 20px;
+
+      table {
+        width: 100%;
+        font-size: small;
+
+        td {
+          text-align: center;
+        }
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      padding-top: 1rem;
+    }
+
+    .pokemon-type {
+      border-radius: 3px;
+      padding: 1px;
+    }
+  }
+
+  .left {
+    width: 30%;
+    float: left;
+  }
+
+  .right {
+    width: 70%;
+    float: right;
+
+    img {
+      width: 100%;
+    }
+  }
+}

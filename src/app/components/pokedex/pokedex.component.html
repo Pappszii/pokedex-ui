@@ -1,57 +1,13 @@
-<!--<div class="container">
-  <div class="top-container">
-    <input [(ngModel)]="value">
-  </div>
-
-  <div class="bottom-container">
-    <div class="left-container">
-      <div class="pokedex-container">
-        <div class="row">
-          <div class="poke-card col-lg-3 col-md-6 col-sm-6 col-6" *ngFor="let poke of pokemons">
-            <img class="card-picture" mat-card-image src={{poke.pictures[0]}}>
-            <div class="card-header">
-              <mat-card-title>{{poke.name}}</mat-card-title>
-              <mat-card-title>{{poke.type}}</mat-card-title>
-            </div>
-            <mat-card-content>
-              <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              </p>
-            </mat-card-content>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="right-container">
-      <div class="user-container" *ngIf="authService.user">
-        {{authService.user.email}}
-      </div>
-    </div>
-  </div>
-</div>-->
 <div class="container">
   <div class="row inverz-row split-container">
     <div class="col-md-8 col-container">
       <div class="form-outline row search-container">
-        <input type="search" placeholder="Search" aria-label="Search" [(ngModel)]="value" />
+        <input type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchValue" (change)="onSearch()" />
       </div>
       <div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-3 grid-container">
         <div class="col" *ngFor="let poke of pokemons">
-          <div class="poke-card hover-overlay ripple">
-            <img class="card-picture" mat-card-image src={{poke.pictures[0]}}>
-            <div class="card-header">
-              <h3>{{poke.name}}</h3>
-              <h3>{{poke.type}}</h3>
-            </div>
-            <div class="card-text">
-              <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              </p>
-            </div>
-          </div>
+          <app-poke-card [pokemon]="poke" [favorite]="isPokemonFavorite(poke)"></app-poke-card>
         </div>
-
       </div>
     </div>
     <div class="col-md-4 col-container">
@@ -62,7 +18,7 @@
           </div>
         </div>
         <div class="favorites-container">
-
+          <h2>Favorite pokemons</h2>
         </div>
       </div>
     </div>

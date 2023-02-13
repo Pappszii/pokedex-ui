@@ -1,0 +1,25 @@
+<div class="poke-card hover-overlay ripple" (click)="openDialog()">
+  <button class="favorite-button" mat-icon-button color="warn" (click)="onFavPokemon($event)">
+    <mat-icon *ngIf="!favorite">favorite_border</mat-icon>
+    <mat-icon *ngIf="favorite">favorite</mat-icon>
+  </button>
+  <img class="card-picture" mat-card-image src={{pokemon.frontSprite}}>
+  <div class="card-header">
+    <h4>{{pokemon.name}}</h4>
+    <div>
+      <h4 class="pokemon-type" [ngStyle]="{'background' : getTypeColor()}">{{pokemon.type}}</h4>
+    </div>
+  </div>
+  <div class="card-text">
+    <table>
+      <tr>
+        <td>Hp: {{pokemon.hp}}</td>
+        <td>Att: {{pokemon.att}}</td>
+      </tr>
+      <tr>
+        <td>Def: {{pokemon.def}}</td>
+        <td>Sp: {{pokemon.speed}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

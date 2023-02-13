@@ -8,6 +8,7 @@ import { SignInModule } from './components/sign-in/sign-in.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokedexModule } from './components/pokedex/pokedex.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PokedexModule } from './components/pokedex/pokedex.module';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     SignInModule,
     PokedexModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

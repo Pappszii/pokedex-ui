@@ -9,10 +9,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { PokeCardComponent } from './poke-card/poke-card.component';
+import { PokeDialogComponent } from './poke-dialog/poke-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [PokedexComponent],
+  declarations: [PokedexComponent, PokeCardComponent, PokeDialogComponent],
   imports: [
     CommonModule,
     PokedexRoutingModule,
@@ -23,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   exports: [PokedexComponent]
 })
